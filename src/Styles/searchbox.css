@@ -1,0 +1,31 @@
+ 
+ .flight-search-container{
+    margin-top: -60px;
+    z-index: 20;
+    position: relative;
+ }
+ .search-box { 
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-orange {
+  background-color: #ff6f00 !important;
+  border-color: #ff6f00;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: #e65c00;
+  border-color: #e65c00;
+}
+
+.swap-button {
+  transition: transform 0.5s ease;
+} 
+
+ .rotating {
+  transform: rotate(360deg);
+}

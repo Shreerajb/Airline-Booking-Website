@@ -1,0 +1,162 @@
+[
+  {
+    "flightNumber": "QP203",
+    "from": "Mumbai",
+    "to": "Delhi",
+    "departureTime": "2025-10-09T08:30:00.555Z",
+    "arrivalTime": "2025-10-08T10:45:00.000Z",
+    "duration": "2h 15m",
+    "price": 4200,
+    "seats": 3
+  },
+  {
+    "flightNumber": "QP205",
+    "from": "Mumbai",
+    "to": "Delhi",
+    "departureTime": "2025-10-09T09:30:00.555Z",
+    "arrivalTime": "2025-10-07T10:45:00.000Z",
+    "duration": "2h 15m",
+    "price": 4200,
+    "seats": 3
+  },
+  {
+    "flightNumber": "AI101",
+    "from": "Delhi",
+    "to": "Bengaluru",
+    "departureTime": "2025-10-08T06:00:00.000Z",
+    "arrivalTime": "2025-10-08T08:30:00.000Z",
+    "duration": "2h 30m",
+    "price": 5800,
+    "seats": 7
+  },
+  {
+    "flightNumber": "SG456",
+    "from": "Chennai",
+    "to": "Kolkata",
+    "departureTime": "2025-10-07T14:15:00.000Z",
+    "arrivalTime": "2025-10-07T16:45:00.000Z",
+    "duration": "2h 30m",
+    "price": 4900,
+    "seats": 1
+  },
+  {
+    "flightNumber": "UK789",
+    "from": "Hyderabad",
+    "to": "Mumbai",
+    "departureTime": "2025-10-07T18:00:00.000Z",
+    "arrivalTime": "2025-10-07T20:00:00.000Z",
+    "duration": "2h",
+    "price": 4100,
+    "seats": 10
+  },
+  {
+    "flightNumber": "G8123",
+    "from": "Ahmedabad",
+    "to": "Delhi",
+    "departureTime": "2025-10-07T09:45:00.000Z",
+    "arrivalTime": "2025-10-07T11:55:00.000Z",
+    "duration": "2h 10m",
+    "price": 4500,
+    "seats": 5
+  },
+  {
+    "flightNumber": "6E404",
+    "from": "Pune",
+    "to": "Jaipur",
+    "departureTime": "2025-10-07T07:00:00.000Z",
+    "arrivalTime": "2025-10-07T09:15:00.000Z",
+    "duration": "2h 15m",
+    "price": 4300,
+    "seats": 2
+  },
+  {
+    "flightNumber": "AI202",
+    "from": "Delhi",
+    "to": "Goa",
+    "departureTime": "2025-10-07T12:30:00.000Z",
+    "arrivalTime": "2025-10-07T14:45:00.000Z",
+    "duration": "2h 15m",
+    "price": 5200,
+    "seats": 23
+  },
+  {
+    "flightNumber": "SG789",
+    "from": "Kolkata",
+    "to": "Mumbai",
+    "departureTime": "2025-10-07T16:00:00.000Z",
+    "arrivalTime": "2025-10-07T18:30:00.000Z",
+    "duration": "2h 30m",
+    "price": 5400,
+    "seats": 6
+  },
+  {
+    "flightNumber": "UK303",
+    "from": "Bengaluru",
+    "to": "Delhi",
+    "departureTime": "2025-10-07T05:45:00.000Z",
+    "arrivalTime": "2025-10-07T08:15:00.000Z",
+    "duration": "2h 30m",
+    "price": 5600,
+    "seats": 7
+  },
+  {
+    "flightNumber": "G8456",
+    "from": "Mumbai",
+    "to": "Chennai",
+    "departureTime": "2025-10-07T11:00:00.000Z",
+    "arrivalTime": "2025-10-07T13:15:00.000Z",
+    "duration": "2h 15m",
+    "price": 4700,
+    "seats": 1
+  },
+  {
+    "flightNumber": "6E505",
+    "from": "Delhi",
+    "to": "Hyderabad",
+    "departureTime": "2025-10-07T17:30:00.000Z",
+    "arrivalTime": "2025-10-07T19:45:00.000Z",
+    "duration": "2h 15m",
+    "price": 5100,
+    "seats": 8
+  },
+  {
+    "flightNumber": "AI303",
+    "from": "Goa",
+    "to": "Mumbai",
+    "departureTime": "2025-10-07T10:00:00.000Z",
+    "arrivalTime": "2025-10-07T11:30:00.000Z",
+    "duration": "1h 30m",
+    "price": 3900,
+    "seats": 9
+  },
+  {
+    "flightNumber": "SG999",
+    "from": "Jaipur",
+    "to": "Ahmedabad",
+    "departureTime": "2025-10-07T13:00:00.000Z",
+    "arrivalTime": "2025-10-07T14:30:00.000Z",
+    "duration": "1h 30m",
+    "price": 3700,
+    "seats": 10
+  },
+  {
+    "flightNumber": "UK606",
+    "from": "Chennai",
+    "to": "Bengaluru",
+    "departureTime": "2025-10-07T08:00:00.000Z",
+    "arrivalTime": "2025-10-07T09:15:00.000Z",
+    "duration": "1h 15m",
+    "price": 3600,
+    "seats": 3
+  },
+  {
+    "flightNumber": "G8999",
+    "from": "Mumbai",
+    "to": "Kolkata",
+    "departureTime": "2025-10-07T15:30:00.000Z",
+    "arrivalTime": "2025-10-07T18:00:00.000Z",
+    "duration": "2h 30m",
+    "price": 5500,
+    "seats": 4
+  }
+]
