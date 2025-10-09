@@ -4,6 +4,8 @@ import { Flight } from "../types/Flight";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { passengerDetails } from "../../store/bookingSlice";
+import { Passenger } from "../types/Passenger";
 
 const FlightSearch: React.FC = () => {
   const [from, setFrom] = useState<string>("");
@@ -53,7 +55,11 @@ const FlightSearch: React.FC = () => {
     );
     setMatchingFlights(filteredFlights);
   }, [from, to, passengerCount, allFlights, navigate]);
-  debugger
+
+  const updatePassengers = (passenger: Passenger[]) => {
+    dispatch(passengerDetails(passenger));
+  }
+
   return (
     <div className="container mt-4">
       {/* <div className="mb-3">
@@ -121,6 +127,16 @@ const FlightSearch: React.FC = () => {
                   <p className="mb-0"><strong>Duration:</strong> {flight.duration}</p>
                   <p className="mb-0"><strong>Fare:</strong>₹{flight.price}</p>
 
+                  <div className="text-end mt-3">
+                    <button 
+                       className="btn btn-outline-primary"
+                       onClick={() =>{
+                        
+                       }}
+                       >
+                        Select Flight
+                       </button>
+                       </div>
 
                 </div>
               </div>

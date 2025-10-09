@@ -15,12 +15,12 @@ export const passengerSlice = createSlice({
   name: 'updatePax',
   initialState,
   reducers: {
-    updatePassengerDetails: (state, action: PayloadAction<Passenger[]>) => {
+    passengerDetails: (state, action: PayloadAction<Passenger[]>) => {
       state.passengers = action.payload;
     },
   },
 });
 
-export const { updatePassengerDetails } = passengerSlice.actions;
+export const { passengerDetails } = passengerSlice.actions;
 
 export default passengerSlice.reducer;
