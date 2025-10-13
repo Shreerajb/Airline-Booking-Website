@@ -1,6 +1,7 @@
 {
   "name": "akasa-air",
   "version": "0.1.0",
+  "homepage": "https://github.com/Shreerajb/Airline-Booking-Website",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
