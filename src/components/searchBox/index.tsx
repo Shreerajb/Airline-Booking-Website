@@ -137,8 +137,11 @@ const SearchBoxDrop: React.FC = () => {
                   }
                   onClick={() => {
                     const tempFrom = from;
+                    const tempFromQuery = fromQuery;
                     setFrom(to);
+                    setFromQuery(toQuery)
                     setTo(tempFrom);
+                    setToQuery(tempFromQuery);
 
                     setIsSwapping(true);
                     setTimeout(() => setIsSwapping(false), 500);
