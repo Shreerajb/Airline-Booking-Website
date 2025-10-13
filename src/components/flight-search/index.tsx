@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import { Flight } from "../types/Flight";
+import { compareFlight, Flight } from "../types/Flight";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { flightDetails, passengerDetails } from "../../store/bookingSlice";
-import { Passenger } from "../types/Passenger";
+import { createListOfEmptyPassengers, Passenger } from "../types/Passenger";
 import FlightItem from "./flight-item";
+import { setPassengerCount } from "../../store/bookingSlice";
 
 const FlightSearch: React.FC = () => {
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
   const [travelDate, setTravelDate] = useState<Date>(new Date());
-  const [passengerCount, setPassengerCount] = useState<number>(1);
+  const [passengerCount, setPassengerCountLocal] = useState<number>(1);
   const [allFlights, setAllFlights] = useState<Flight[]>([]);
   const [matchFlights, setMatchingFlights] = useState<Flight[]>([]);
   const [fromError, setFromError] = useState<string>("");
@@ -21,30 +22,22 @@ const FlightSearch: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const selectedFlightInfo = useSelector((state: RootState) => state.booking);
+  const bookingState = useSelector((state: RootState) => state.booking);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log("selectedFlightInfo was updated", selectedFlightInfo);
-  }, [selectedFlightInfo]);
 
   useEffect(() => {
     setFrom(searchParams.get("from") ?? "");
     setTo(searchParams.get("to") ?? "");
     setTravelDate(new Date(searchParams.get("travelDate") ?? ""));
     const initialPassengers = parseInt(searchParams.get("passengers") ?? "1");
-    setPassengerCount(isNaN(initialPassengers) ? 1 : initialPassengers);
+    setPassengerCountLocal(isNaN(initialPassengers) ? 1 : initialPassengers);
   }, [searchParams]);
 
   useEffect(() => {
     fetch("/flights.json")
       .then((res) => res.json())
       .then((data) => {
-        const parsedFlights: Flight[] = data.map((flight: any) => ({
-          ...flight,
-          departureTime: new Date(flight.departureTime),
-          arrivalTime: new Date(flight.arrivalTime),
-        }));
+        const parsedFlights: Flight[] = data.map((flight: any) => flight);
         setAllFlights(parsedFlights);
       });
   }, []);
@@ -61,7 +54,11 @@ const FlightSearch: React.FC = () => {
 
   const updateFlight = (flight: Flight) => {
     dispatch(flightDetails(flight));
+    dispatch(setPassengerCount(passengerCount));
+    dispatch(passengerDetails(createListOfEmptyPassengers(passengerCount)));
   };
+
+  console.log("bookingState.flightDetails", bookingState.flightDetails);
 
   return (
     <div className="container mt-4">
@@ -75,12 +72,32 @@ const FlightSearch: React.FC = () => {
       <div className="mt-4">
         {matchFlights.length > 0 ? (
           matchFlights.map((flight: Flight) => (
-            <FlightItem {...flight} updateFlightCallback={updateFlight} />
+            <FlightItem
+              {...flight}
+              updateFlightCallback={updateFlight}
+              isFlightSelected={compareFlight(
+                bookingState.flightDetails,
+                flight
+              )}
+            />
           ))
         ) : (
           <p className="text-danger">No flights available for your search.</p>
         )}
       </div>
+      {bookingState.isReadyToBook && (
+          <div className="fixed-bottom bg-light border-top p-3 text-end">
+            <button
+              className="btn btn-warning"
+              onClick={() => navigate("/passenger-details")}
+              //  console.log("proceeding with flight:", bookingState.flightDetails)
+                
+              // }}
+            >
+              Continue
+            </button>
+          </div>
+        )}
     </div>
   );
 };

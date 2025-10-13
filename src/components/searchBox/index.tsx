@@ -96,7 +96,7 @@ const SearchBoxDrop: React.FC = () => {
 
               <Col md="auto" xs={12} className="d-flex justify-content-center">
                 <Button
-                  variant="outline-secondary"
+                  variant="outline-warning"
                   className={
                     isSwapping ? "swap-button rotating" : "swap-button"
                   }

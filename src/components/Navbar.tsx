@@ -7,8 +7,9 @@ const AppNavbar: React.FC = () => {
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid ps-5">
-            <a className="navbar-brand ms-5" href="/">
-              ✈️Akasa air
+            <a className="navbar-brand ms-5 d-flex align-items-center" href="/">
+              {/* ✈️Akasa air */}
+              <img src="\Images\Akasa-Air-Neues-Logo.png" className="img-fluid" style={{ maxHeight:"100px",width:"auto"}}></img> 
             </a>
             <button
               className="navbar-toggler"
@@ -59,7 +60,7 @@ const AppNavbar: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                <button type="button" className="btn btn-outline-success ms-5">Login</button>
+                <button type="button" className="btn btn-outline-warning ms-5">Login</button>
                 </li>
               </ul>
             </div>

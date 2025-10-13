@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Flight } from "../../types/Flight";
 
 type UpdateFlight = {
+  isFlightSelected: boolean;
   updateFlightCallback: (flight: Flight) => void;
 };
 
@@ -13,16 +15,17 @@ const FlightItem = ({
   duration,
   price,
   seats,
+  isFlightSelected,
   updateFlightCallback,
 }: Flight & UpdateFlight) => {
   return (
     <div key={flightNumber} className="card mb-3 shadow-sm border-0">
       <div className="card-body">
-        <h6 className="fw-bold text-primary mb-3">✈️ {flightNumber}</h6>
+        <h6 className="fw-bold text-warning mb-3">✈️ {flightNumber}</h6>
         <div className="d-flex justify-content-between align-items-center mb-2">
           <div className="text-center" style={{ width: "40%" }}>
             <h4 className="fw-bold mb-0">
-              {departureTime.toLocaleTimeString("en-IN", {
+              {new Date(departureTime).toLocaleTimeString("en-IN", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
@@ -35,7 +38,7 @@ const FlightItem = ({
 
           <div className="text-center" style={{ width: "40%" }}>
             <h4 className="fw-bold mb-0">
-              {arrivalTime.toLocaleTimeString("en-IN", {
+              {new Date(arrivalTime).toLocaleTimeString("en-IN", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
@@ -53,7 +56,11 @@ const FlightItem = ({
 
           <div className="text-end mt-3">
             <button
-              className="btn btn-outline-primary"
+              className={`btn ${
+                isFlightSelected
+                  ? "btn-outline-secondary"
+                  : "btn-outline-warning"
+              }`}
               onClick={() =>
                 updateFlightCallback({
                   flightNumber,
@@ -67,7 +74,7 @@ const FlightItem = ({
                 })
               }
             >
-              Select Flight
+              {isFlightSelected ? "Flight Selected" : "Select Flight"}
             </button>
           </div>
         </div>
