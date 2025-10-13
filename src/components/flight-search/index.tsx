@@ -18,6 +18,9 @@ const FlightSearch: React.FC = () => {
   const [matchFlights, setMatchingFlights] = useState<Flight[]>([]);
   const [fromError, setFromError] = useState<string>("");
   const [toError, setToError] = useState<string>("");
+  const [fromQuery, setFromQuery] = useState<string>("");
+const [toQuery, setToQuery] = useState<string>("");
+
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -25,9 +28,11 @@ const FlightSearch: React.FC = () => {
   const bookingState = useSelector((state: RootState) => state.booking);
   const dispatch = useDispatch();
 
+ 
+
   useEffect(() => {
-    setFrom(searchParams.get("from") ?? "");
-    setTo(searchParams.get("to") ?? "");
+    setFromQuery(searchParams.get("from") ?? "");
+    setToQuery(searchParams.get("to") ?? "");
     setTravelDate(new Date(searchParams.get("travelDate") ?? ""));
     const initialPassengers = parseInt(searchParams.get("passengers") ?? "1");
     setPassengerCountLocal(isNaN(initialPassengers) ? 1 : initialPassengers);
@@ -39,6 +44,8 @@ const FlightSearch: React.FC = () => {
       .then((data) => {
         const parsedFlights: Flight[] = data.map((flight: any) => flight);
         setAllFlights(parsedFlights);
+
+       
       });
   }, []);
 

@@ -10,6 +10,24 @@ const SearchBoxDrop: React.FC = () => {
   const [isSwapping, setIsSwapping] = useState(false);
   const [travelDate, setTravelDate] = useState<Date>(new Date());
   const [passengers, setPassengers] = useState<number>(1);
+
+  const [cityList] = useState<string[]>([
+    "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata",
+    "Hyderabad", "Ahmedabad", "Pune", "Jaipur", "Goa"
+  ]);
+
+  const [fromQuery, setFromQuery] = useState("");
+  const [toQuery, setToQuery] = useState("");
+
+  const filteredFromCities = cityList.filter((city) =>
+    city.toLowerCase().includes(fromQuery.toLowerCase())
+  );
+
+  const filteredToCities = cityList.filter((city) =>
+    city.toLowerCase().includes(toQuery.toLowerCase())
+  );
+
+
   const [errors, setErrors] = useState({
     from: "",
     to: "",
@@ -20,7 +38,7 @@ const SearchBoxDrop: React.FC = () => {
   let navigate = useNavigate();
 
   const validate = () => {
-    const validCities = ["mumbai", "delhi", "bangalore", "chennai", "kolkata","hyderabad", "ahmedabad", "pune", "jaipur","goa"];
+    const validCities = ["mumbai", "delhi", "bangalore", "chennai", "kolkata", "hyderabad", "ahmedabad", "pune", "jaipur", "goa"];
     // TODO: Add validation logic for all the states
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -35,24 +53,24 @@ const SearchBoxDrop: React.FC = () => {
     const fromCity = from.trim().toLowerCase();
     const toCity = to.trim().toLowerCase();
 
-   if (fromCity.length === 0) {
-    newErrors.from = "Please enter a departure city";
-  } else if (!validCities.includes(fromCity)) {
-    newErrors.from = "Enter a valid departure city";
-  }
-  if (toCity.length === 0) {
-    newErrors.to = "Please enter a destination city";
-  } else if (!validCities.includes(toCity)) {
-    newErrors.to = "Enter a valid destination city";
-  }
-  if (selectedDate < today) {
-    newErrors.travelDate = "Travel date cannot be in the past";
-  }
+    if (fromCity.length === 0) {
+      newErrors.from = "Please enter a departure city";
+    } else if (!validCities.includes(fromCity)) {
+      newErrors.from = "Enter a valid departure city";
+    }
+    if (toCity.length === 0) {
+      newErrors.to = "Please enter a destination city";
+    } else if (!validCities.includes(toCity)) {
+      newErrors.to = "Enter a valid destination city";
+    }
+    if (selectedDate < today) {
+      newErrors.travelDate = "Travel date cannot be in the past";
+    }
 
-  if (!passengers || isNaN(passengers) || passengers <= 0) {
-    newErrors.passengers = "Enter a valid number of passengers";
-  }
-  
+    if (!passengers || isNaN(passengers) || passengers <= 0) {
+      newErrors.passengers = "Enter a valid number of passengers";
+    }
+
     setErrors(newErrors);
 
     const hasErrors = Object.values(newErrors).some((msg) => msg !== "");
@@ -86,10 +104,28 @@ const SearchBoxDrop: React.FC = () => {
               <Col md={3} xs={12}>
                 <Form.Control
                   placeholder="From*"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
+                  value={fromQuery}
+                  onChange={(e) => setFromQuery(e.target.value)}
                   isInvalid={!!errors.from}
                 />
+                {fromQuery && fromQuery !== from && (
+                  <ul className="list-group position-absolute w-100 z-3">
+                    {filteredFromCities.map((city, index) => (
+                      <li
+                        key={index}
+                        className="list-group-item"
+                        onClick={() => {
+                          setFrom(city);
+                          setFromQuery(city);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {city}
+                      </li>
+                    ))}
+
+                  </ul>
+                )}
                 <Form.Text className="text-danger">{errors.from}</Form.Text>
 
               </Col>
@@ -116,10 +152,29 @@ const SearchBoxDrop: React.FC = () => {
               <Col md={3} xs={12}>
                 <Form.Control
                   placeholder="To*"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
+                  value={toQuery}
+                  onChange={(e) => setToQuery(e.target.value)}
                   isInvalid={!!errors.to}
                 />
+                {toQuery && toQuery !== to &&(
+                  <ul className="list-group position-absolute w-100 z-3">
+                    {filteredToCities.map((city, index) => (
+                      <li
+                        key={index}
+                        className="list-group-item"
+                        onClick={() => {
+                          setTo(city);
+                          setToQuery(city);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {city}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+
                 <Form.Text className="text-danger">{errors.to}</Form.Text>
               </Col>
 
