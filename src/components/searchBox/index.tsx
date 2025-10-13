@@ -10,7 +10,6 @@ const SearchBoxDrop: React.FC = () => {
   const [isSwapping, setIsSwapping] = useState(false);
   const [travelDate, setTravelDate] = useState<Date>(new Date());
   const [passengers, setPassengers] = useState<number>(1);
-
   const [cityList] = useState<string[]>([
     "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata",
     "Hyderabad", "Ahmedabad", "Pune", "Jaipur", "Goa"

@@ -18,7 +18,7 @@ const Herocarousel: React.FC = () => {
     >
      {slides.map((slide, index) => (
         <Carousel.Item
-          className={`carousel-item ${index == 0 ? "active" : ""}`}
+          className={`carousel-item ${index === 0 ? "active" : ""}`}
         >
           <img src={slide.url} className="d-block w-100" style={{ height:"400px", objectFit: "cover"}} alt="..." />
         </Carousel.Item>

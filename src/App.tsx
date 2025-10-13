@@ -5,14 +5,11 @@ import SearchBoxDrop from './components/searchBox';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes } from 'react-router-dom';
 import FlightSearch from './components/flight-search';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
 import PassengerDetailsPage from './components/passengerDetailsPage';
 import AddOnsPage from './components/AddOnsPage';
 
 function App() {
   return (
-    
     <Routes>
       <Route element={<AppNavbar />}>
         <Route
@@ -28,8 +25,6 @@ function App() {
           <FlightSearch />} />
           <Route path="/passenger-details" element={<PassengerDetailsPage />} />
           <Route path="/add-ons" element={<AddOnsPage />} />
-
-          
       </Route>
     </Routes >
     

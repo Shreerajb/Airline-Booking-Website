@@ -5,21 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { flightDetails, passengerDetails } from "../../store/bookingSlice";
-import { createListOfEmptyPassengers, Passenger } from "../types/Passenger";
+import { createListOfEmptyPassengers} from "../types/Passenger";
 import FlightItem from "./flight-item";
 import { setPassengerCount } from "../../store/bookingSlice";
 
 const FlightSearch: React.FC = () => {
-  const [from, setFrom] = useState<string>("");
-  const [to, setTo] = useState<string>("");
+  // const [from, setFrom] = useState<string>("");
+  // const [to, setTo] = useState<string>("");
   const [travelDate, setTravelDate] = useState<Date>(new Date());
   const [passengerCount, setPassengerCountLocal] = useState<number>(1);
   const [allFlights, setAllFlights] = useState<Flight[]>([]);
   const [matchFlights, setMatchingFlights] = useState<Flight[]>([]);
-  const [fromError, setFromError] = useState<string>("");
-  const [toError, setToError] = useState<string>("");
   const [fromQuery, setFromQuery] = useState<string>("");
-const [toQuery, setToQuery] = useState<string>("");
+  const [toQuery, setToQuery] = useState<string>("");
 
 
   const [searchParams] = useSearchParams();
@@ -52,12 +50,12 @@ const [toQuery, setToQuery] = useState<string>("");
   useEffect(() => {
     const filteredFlights = allFlights.filter(
       (flight) =>
-        flight.from.toLowerCase() === from.toLowerCase() &&
-        flight.to.toLowerCase() === to.toLowerCase() &&
+        flight.from.toLowerCase() === fromQuery.toLowerCase() &&
+        flight.to.toLowerCase() === toQuery.toLowerCase() &&
         flight.seats >= passengerCount
     );
     setMatchingFlights(filteredFlights);
-  }, [from, to, passengerCount, allFlights, navigate]);
+  }, [fromQuery, toQuery, passengerCount, allFlights, navigate]);
 
   const updateFlight = (flight: Flight) => {
     dispatch(flightDetails(flight));

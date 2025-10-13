@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Flight } from "../../types/Flight";
 
 type UpdateFlight = {

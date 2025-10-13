@@ -1,5 +1,4 @@
 import React from "react";
-import{Navbar, Nav, Container} from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 
 const AppNavbar: React.FC = () => {
@@ -9,7 +8,7 @@ const AppNavbar: React.FC = () => {
           <div className="container-fluid ps-5">
             <a className="navbar-brand ms-5 d-flex align-items-center" href="/">
               {/* ✈️Akasa air */}
-              <img src="\Images\Akasa-Air-Neues-Logo.png" className="img-fluid" style={{ maxHeight:"100px",width:"auto"}}></img> 
+              <img src="\Images\Akasa-Air-Neues-Logo.png" className="img-fluid" style={{ maxHeight:"100px",width:"auto"}} alt="akasa logo"></img> 
             </a>
             <button
               className="navbar-toggler"
@@ -30,32 +29,32 @@ const AppNavbar: React.FC = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Manage Booking
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Check-in
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Add-ons
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Offers
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Tarrif
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Contact US
                   </a>
                 </li>
