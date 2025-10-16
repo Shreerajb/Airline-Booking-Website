@@ -15,6 +15,7 @@
     "@types/react-dom": "^19.1.9",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
@@ -28,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"    
   },
   "eslintConfig": {
     "extends": [
